@@ -2,21 +2,63 @@
 //- Prompt user to input trip length
 
 function getTripLength() {
-    document.getElementById("tripLengthDOM").innerHTML = prompt('Trip length in km')
+    const tripLength = prompt('Trip length in km')
+
+    if (tripLength === "") {
+        return alert('No input from user')
+    }
+
+    else if (tripLength === null) {
+        return 
+    }
+
+    else if (isNaN(parseInt(tripLength))) {
+        return alert('Input is not a number')
+    }
+
+    document.getElementById("tripLengthDOM").innerHTML = tripLength
 }
 
 //### Get user age
 //- Prompt user to input age
 
 function getUserAge() {
-    document.getElementById("userAgeDOM").innerHTML = prompt('User age in years')
+    const userAge = prompt('Trip length in km')
+
+    if (userAge === "") {
+        return alert('No input from user')
+    }
+
+    else if (userAge === null) {
+        return 
+    }
+
+    else if (isNaN(parseInt(userAge))) {
+        return alert('Input is not a number')
+    }
+
+    document.getElementById("userAgeDOM").innerHTML = userAge
 }
 
 //### Get ticket rate
 //- Prompt user to input ticket rate
 
 function getTicketRate() {
-    document.getElementById("ticketRateDOM").innerHTML = prompt('Price per km in euros')
+    const ticketRate = prompt('Trip length in km')
+
+    if (ticketRate === "") {
+        return alert('No input from user')
+    }
+
+    else if (ticketRate === null) {
+        return 
+    }
+
+    else if (isNaN(parseInt(ticketRate))) {
+        return alert('Input is not a number')
+    }
+
+    document.getElementById("ticketRateDOM").innerHTML = ticketRate
 }
 
 //### Calculate final price
@@ -30,23 +72,24 @@ function getFinalPrice() {
     const userAge = document.getElementById("userAgeDOM").innerHTML
     const ticketRate = document.getElementById("ticketRateDOM").innerHTML
     const basePrice = tripLength * ticketRate
+
     let finalPrice
     let amountSaved
 
     if (userAge < 18) {
-        finalPrice = basePrice * 0.8
-        amountSaved = basePrice - finalPrice
+        finalPrice = basePrice * 0.8      
     }
+
     else if (userAge > 65) {
-        finalPrice = basePrice * 0.6
-        amountSaved = basePrice - finalPrice
-    } else {
-        finalPrice = basePrice
-        amountSaved = 0
+        finalPrice = basePrice * 0.6  
     }
+
+    finalPrice = basePrice
+    amountSaved = basePrice - finalPrice
 
     document.getElementById("basePriceDOM").innerHTML = basePrice.toFixed(2);
     document.getElementById("finalPriceDOM").innerHTML = finalPrice.toFixed(2);
     document.getElementById("amountSavedDOM").innerHTML = amountSaved.toFixed(2)
+
 }
 
