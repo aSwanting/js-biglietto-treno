@@ -26,29 +26,25 @@ function getTicketRate() {
 
 function getFinalPrice() {
 
-    let tripLength = document.getElementById("tripLengthDOM").innerHTML
-    let userAge = document.getElementById("userAgeDOM").innerHTML
-    let ticketRate = document.getElementById("ticketRateDOM").innerHTML
-    let basePrice = tripLength * ticketRate
+    const tripLength = document.getElementById("tripLengthDOM").innerHTML
+    const userAge = document.getElementById("userAgeDOM").innerHTML
+    const ticketRate = document.getElementById("ticketRateDOM").innerHTML
+    const basePrice = tripLength * ticketRate
     let finalPrice
     let amountSaved
 
     if (userAge < 18) {
-
         finalPrice = basePrice * 0.8
         amountSaved = basePrice - finalPrice
-
     }
     else if (userAge > 65) {
-
         finalPrice = basePrice * 0.6
         amountSaved = basePrice - finalPrice
-
     } else {
-
         finalPrice = basePrice
         amountSaved = 0
     }
+
     document.getElementById("basePriceDOM").innerHTML = basePrice.toFixed(2);
     document.getElementById("finalPriceDOM").innerHTML = finalPrice.toFixed(2);
     document.getElementById("amountSavedDOM").innerHTML = amountSaved.toFixed(2)
