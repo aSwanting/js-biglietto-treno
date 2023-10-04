@@ -1,22 +1,23 @@
 //### Get user trip length in km
 //- Prompt user to input trip length
-//- Store in variable 'tripLength'
 
-const tripLength = prompt('Trip length in km')
-console.log('Trip length = ' + tripLength + 'km')
+function getTripLength() {
+    document.getElementById("tripLengthDOM").innerHTML = prompt('Trip length in km')
+}
 
 //### Get user age
 //- Prompt user to input age
-//- Store in variable 'userAge'
 
-const userAge = prompt('User age')
-console.log('User is ' + userAge + ' years old')
+function getUserAge() {
+    document.getElementById("userAgeDOM").innerHTML = prompt('User age in years')
+}
 
-//### Calculate base price
-//- Calculate price 'tripBasePrice' = 'trip-length' * 0.21 
+//### Get ticket rate
+//- Prompt user to input ticket rate
 
-const basePrice = tripLength * .21
-console.log('Base trip price = ' + basePrice + ' euros')
+function getTicketRate() {
+    document.getElementById("ticketRateDOM").innerHTML = prompt('Price per km in euros')
+}
 
 //### Calculate final price
 //- IF user is a minor apply 20% discount with tripBasePrice * 0.8
@@ -24,14 +25,32 @@ console.log('Base trip price = ' + basePrice + ' euros')
 //- ELSE no discount
 
 function getFinalPrice() {
+
+    let tripLength = document.getElementById("tripLengthDOM").innerHTML
+    let userAge = document.getElementById("userAgeDOM").innerHTML
+    let ticketRate = document.getElementById("ticketRateDOM").innerHTML
+    let basePrice = tripLength * ticketRate
+    let finalPrice
+    let amountSaved
+
     if (userAge < 18) {
-        return basePrice * 0.8
+
+        finalPrice = basePrice * 0.8
+        amountSaved = basePrice - finalPrice
+
     }
     else if (userAge > 65) {
-        return basePrice * 0.6
+
+        finalPrice = basePrice * 0.6
+        amountSaved = basePrice - finalPrice
+
     } else {
-        return basePrice
+
+        finalPrice = basePrice
+        amountSaved = 0
     }
+    document.getElementById("basePriceDOM").innerHTML = basePrice.toFixed(2);
+    document.getElementById("finalPriceDOM").innerHTML = finalPrice.toFixed(2);
+    document.getElementById("amountSavedDOM").innerHTML = amountSaved.toFixed(2)
 }
 
-console.log('Final trip price = ' + getFinalPrice() + ' euros')
