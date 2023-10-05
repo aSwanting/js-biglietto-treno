@@ -44,7 +44,7 @@ function getUserAge() {
 //- Prompt user to input ticket rate
 
 function getTicketRate() {
-    const ticketRate = prompt('Trip length in km')
+    const ticketRate = prompt('Ticket Rate in € / km')
 
     if (ticketRate === "") {
         return alert('No input from user')
@@ -68,9 +68,15 @@ function getTicketRate() {
 
 function getFinalPrice() {
 
-    const tripLength = document.getElementById("tripLengthDOM").innerHTML
-    const userAge = document.getElementById("userAgeDOM").innerHTML
-    const ticketRate = document.getElementById("ticketRateDOM").innerHTML
+    const tripLength = parseFloat(document.getElementById("tripLengthDOM").innerHTML) 
+    console.log(tripLength + ' (' + typeof(tripLength) + ')')
+
+    const userAge = parseFloat(document.getElementById("userAgeDOM").innerHTML)
+    console.log(userAge + ' (' + typeof(userAge) + ')')
+
+    const ticketRate = parseFloat(document.getElementById("ticketRateDOM").innerHTML)
+    console.log(ticketRate + ' (' + typeof(ticketRate) + ')')
+
     const basePrice = tripLength * ticketRate
 
     let finalPrice
